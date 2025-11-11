@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Atul Pachnure — Data Analyst (Fresher)</title>
+  <meta name="description" content="Portfolio of Atul Pachnure — Data Analyst (Fresher). Skills, projects, and contact." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <span class="name">Atul Pachnure</span>
+      <span class="role">Data Analyst (Fresher)</span>
+    </div>
+    <nav class="nav">
+      <a href="#skills">Skills</a>
+      <a href="#featured">Featured</a>
+      <a href="#all">All Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="#resume" class="chip">Resume</a>
+    </nav>
+    <div class="actions">
+      <button id="themeToggle" aria-label="Toggle dark mode" title="Toggle light/dark">☾</button>
+    </div>
+  </header>
+
+  <!-- Skills -->
+  <section id="skills" class="section">
+    <div class="section-head">
+      <h2>Skills</h2>
+      <p class="muted">Single, consolidated list derived from projects.</p>
+    </div>
+    <ul class="skill-list reveal">
+      <li>Python</li>
+      <li>Java</li>
+      <li>JavaScript</li>
+      <li>PHP</li>
+      <li>SQL</li>
+      <li>Machine Learning (scikit-learn, pandas, numpy)</li>
+      <li>NLP (NLTK, spaCy)</li>
+      <li>Data Visualization (matplotlib, seaborn)</li>
+      <li>Flask / FastAPI (APIs)</li>
+      <li>HTML5, CSS3, AJAX/fetch</li>
+      <li>JDBC, MySQL (CRUD/DB connectivity)</li>
+      <li>JUnit (Java testing)</li>
+      <li>Git & GitHub</li>
+    </ul>
+  </section>
+
+  <!-- Featured Projects -->
+  <section id="featured" class="section">
+    <div class="section-head">
+      <h2>Featured Projects</h2>
+      <div class="filters">
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="Python">Python</button>
+          <button class="filter-btn" data-filter="JavaScript">JavaScript</button>
+          <button class="filter-btn" data-filter="Java">Java</button>
+          <button class="filter-btn" data-filter="PHP">PHP</button>
+          <span class="filter-underline" aria-hidden="true"></span>
+        </div>
+        <input id="projectSearch" type="search" placeholder="Search projects…" aria-label="Search projects" />
+      </div>
+    </div>
+
+    <div id="featuredGrid" class="grid reveal">
+      <!-- Cards injected by script.js from PROJECTS (featured:true) -->
+    </div>
+  </section>
+
+  <!-- All Projects -->
+  <section id="all" class="section">
+    <div class="section-head">
+      <h2>All Projects</h2>
+      <p class="muted">Browse everything. Use filters or search above.</p>
+    </div>
+    <div id="allGrid" class="grid reveal collapsed">
+      <!-- Cards injected (all projects). Collapsed by default. -->
+    </div>
+    <div class="center">
+      <button id="toggleAll" class="ghost">View All</button>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="section-head">
+      <h2>Contact</h2>
+      <p class="muted">Reach out for internships, fresher roles, or collaborations.</p>
+    </div>
+    <div class="contact-cards reveal">
+      <a class="contact-card" href="mailto:atulsp48@gmail.com" target="_blank" rel="noopener">
+        <span class="label">Email</span>
+        <span class="value">atulsp48@gmail.com</span>
+      </a>
+      <a class="contact-card" href="https://www.linkedin.com/in/atul-pachnure" target="_blank" rel="noopener">
+        <span class="label">LinkedIn</span>
+        <span class="value">/in/atul-pachnure</span>
+      </a>
+      <a class="contact-card" href="https://github.com/chinnu48" target="_blank" rel="noopener">
+        <span class="label">GitHub</span>
+        <span class="value">@chinnu48</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Resume -->
+  <section id="resume" class="section">
+    <div class="section-head">
+      <h2>Resume</h2>
+      <p class="muted">Upload later — the button will activate automatically.</p>
+    </div>
+    <div class="center">
+      <a id="resumeBtn" class="cta disabled" href="#" target="_blank" rel="noopener" aria-disabled="true">Download Resume</a>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card" role="document">
+      <button class="modal-close" aria-label="Close">×</button>
+      <div class="modal-media"></div>
+      <div class="modal-body">
+        <h3 class="modal-title"></h3>
+        <p class="modal-desc"></p>
+        <div class="tags"></div>
+        <div class="links"></div>
+      </div>
+    </div>
+    <div class="modal-backdrop"></div>
+  </div>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Atul Pachnure — Clean, minimal, Apple-like.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
