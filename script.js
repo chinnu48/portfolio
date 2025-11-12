@@ -110,29 +110,33 @@ function el(tag, attrs = {}, children = []) {
 
 function safeImage(src, alt, fallbackText) {
   const wrap = el("div", { class: "thumb" });
-  
+
   const fb = el("div", { class: "fallback" }, [document.createTextNode(fallbackText || "Preview")]);
   wrap.appendChild(fb);
-  
+
   const img = new Image();
   img.alt = alt || "";
-  
+  img.style.width = "100%";
+  img.style.height = "100%";
+  img.style.objectFit = "cover";
+  img.style.display = "block";
+
   const handleLoad = () => {
     // Remove fallback and show image
     const fallback = wrap.querySelector(".fallback");
     if (fallback) fallback.remove();
     wrap.appendChild(img);
   };
-  
+
   const handleError = () => {
     // Keep fallback, don't add image
     console.warn(`Failed to load image: ${src}`);
   };
-  
+
   img.addEventListener("load", handleLoad);
   img.addEventListener("error", handleError);
   img.src = src;
-  
+
   return wrap;
 }
 
@@ -149,8 +153,7 @@ function projectCard(p) {
   const badges = el("div", { class: "badges" }, p.tech.map(t => el("span", { class: "badge" }, [t])));
 
   const actions = el("div", { class: "actions" }, [
-    el("a", { class: "btn", href: p.github, target: "_blank", rel: "noopener" }, ["GitHub"]),
-    el("button", { class: "btn primary", onClick: () => openModal(p) }, ["Open Preview"])
+    el("a", { class: "btn", href: p.github, target: "_blank", rel: "noopener" }, ["GitHub"])
   ]);
 
   card.append(thumb, title, desc, badges, actions);
