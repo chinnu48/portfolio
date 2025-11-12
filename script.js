@@ -110,21 +110,29 @@ function el(tag, attrs = {}, children = []) {
 
 function safeImage(src, alt, fallbackText) {
   const wrap = el("div", { class: "thumb" });
+  
+  const fb = el("div", { class: "fallback" }, [document.createTextNode(fallbackText || "Preview")]);
+  wrap.appendChild(fb);
+  
   const img = new Image();
   img.alt = alt || "";
-  img.loading = "lazy";
-  img.src = src;
-
-  const fb = el("div", { class: "fallback" }, [document.createTextNode(fallbackText || "Preview")]);
-
-  img.addEventListener("error", () => {
-    wrap.appendChild(fb);
-  });
-  img.addEventListener("load", () => {
+  
+  const handleLoad = () => {
+    // Remove fallback and show image
+    const fallback = wrap.querySelector(".fallback");
+    if (fallback) fallback.remove();
     wrap.appendChild(img);
-  });
-
-  wrap.appendChild(fb);
+  };
+  
+  const handleError = () => {
+    // Keep fallback, don't add image
+    console.warn(`Failed to load image: ${src}`);
+  };
+  
+  img.addEventListener("load", handleLoad);
+  img.addEventListener("error", handleError);
+  img.src = src;
+  
   return wrap;
 }
 
